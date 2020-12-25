@@ -13,15 +13,29 @@
         <header>
             <nav></nav>
         </header>
-        <main>
+        <section>
             <form>
-                <div>
-                    <div><input type = "text" placeholder="Enter a food item or dish" id = "Search-query" value = ""></div>
-                    <div><button type = "submit" id = "Search-button">Search</button></div>
+                <div class = "search-section">
+                    <img src = "images/search-background.jpg">
+                    <div style = "display: flex;flex-direction: row;">
+                        <div><input type = "text" placeholder="Enter a food item or dish" id = "Search-query" value = ""></div>
+                        <div><button type = "submit" id = "Search-button">Search</button></div>    
+                    </div>
                 </div>
-
-                <p id = "result"></p>
+    
             </form>
+            
+            <!-- <div style = "background-color: rgb(245,234,34);"></div>  Header for ' Search results for " " ' -->
+
+            <div>'
+                <p id = "result">
+                    
+                </p>
+            </div><!-- Container to display search results -->
+            <!-- <h3 id ="similarIngrHeading"></h3> -->
+        </section>
+        
+        <main>
         <h2>Description</h2>
         <p>This website makes use of an API,which allows users to discover nutritional and diet data of generic,packaged foods and ingredients.
             Users can also discover the variety of healthy meals that can be prepared with any of the related food ingredients searched for.
