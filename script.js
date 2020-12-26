@@ -1,4 +1,16 @@
 var targetFood;
+
+ /*
+url = http://www.googleapis.com/youtube/v3/search?key=AIzaSyAX-5h3JcoZufXXPgVRiXK2en1OYGVVNGM&type=video&part=snippet&maxResults=10&q=chicken
+key=value
+==========
+var YT_API_KEY="AIzaSyAX-5h3JcoZufXXPgVRiXK2en1OYGVVNGM";
+var type=video;
+var part=snippet;
+var maxResults = noOfVideosToAppear;
+var q= user_query;
+
+*/
 $("#Search-query").keyup(function(){
     targetFood = document.getElementById("Search-query").value;
 })
@@ -86,3 +98,4 @@ $(document).ready(function(){
         })
     });
 });
+
