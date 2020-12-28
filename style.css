@@ -9,7 +9,6 @@ nav li a{
 nav img{
     position: absolute;;
     top:20px;
-    margin-left:10px;
 }
 /* ul {
     list-style-type: none;
@@ -47,6 +46,32 @@ p{
     bottom:300px;
     
 }
+.loader-wrapper{
+    background-color: #a8a8a8;
+    position: relative;
+}
+.loader-wrapper div{
+    color:#000000;
+    text-transform: uppercase;
+}
+
+.loader{
+    position: absolute;
+    justify-content: center;
+    border-radius: 50%;
+    border-top: 16px solid #f0481f;
+    border-right:16px solid #fff;
+    border-bottom:16px solid #f0481f;
+    border-left:16px solid#fff ;
+   
+    width: 120px;
+    height: 120px;
+    animation: spin 4s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
  /* #result {
      
 }  */

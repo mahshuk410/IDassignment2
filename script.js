@@ -1,6 +1,7 @@
 var targetFood;
 
- /*
+ /*for youtube API
+ ================================
 url = http://www.googleapis.com/youtube/v3/search?key=AIzaSyAX-5h3JcoZufXXPgVRiXK2en1OYGVVNGM&type=video&part=snippet&maxResults=10&q=chicken
 key=value
 ==========
@@ -9,7 +10,7 @@ var type=video;
 var part=snippet;
 var maxResults = noOfVideosToAppear;
 var q= user_query;
-
+=============================================================
 */
 $("#Search-query").keyup(function(){
     targetFood = document.getElementById("Search-query").value;
@@ -17,10 +18,15 @@ $("#Search-query").keyup(function(){
 ;
 
 $(document).ready(function(){
+    
+       
     $("#Search-button").click(function(e){
        e.preventDefault();
-        $("#result").before().text(`Search results for '${targetFood}'`);
-
+       $("#result").before().text(`Search results for '${targetFood}'`);
+       const loadingCircle = $("section .loader-wrapper");
+       loadingCircle.children().eq(1).text('Loading...');
+       loadingCircle.children().first().addClass("loader");
+       loadingCircle.show();
         $.ajax({
             dataType:'json',
             method:"GET",
@@ -34,7 +40,7 @@ $(document).ready(function(){
             // $.each(data,function(key,value){
             //     console.log(key+":" +value);
             // });
-            
+            loadingCircle.fadeOut("slow");
             var nutrients  = data.parsed[0].food.nutrients;
             let ingrName = data.parsed[0].food.label;
             let ingrImage = data.parsed[0].food.image;
