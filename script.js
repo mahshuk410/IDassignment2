@@ -1,5 +1,6 @@
 var targetFood;
 var targetFoodKey;
+var loadingCircle;  
  /*for youtube API
  ================================
 url = http://www.googleapis.com/youtube/v3/search?key=AIzaSyAX-5h3JcoZufXXPgVRiXK2en1OYGVVNGM&type=video&part=snippet&maxResults=10&q=chicken
@@ -25,10 +26,7 @@ $(document).ready(function(){
     $("#Search-button").click(function(e){
        e.preventDefault();
        $("#result").before().text(`Search results for '${targetFood}'`);
-       const loadingCircle = $("section .loader-wrapper");
-       loadingCircle.children().eq(1).text('Loading...');
-       loadingCircle.children().first().addClass("loader");
-       loadingCircle.show();
+       
         $.ajax({
             dataType:'json',
             method:"GET",
@@ -36,10 +34,25 @@ $(document).ready(function(){
             "headers": {
                 "x-rapidapi-key": "e51e529e9emsh680c3ed1cdba0abp149d45jsn49661bfdcbeb",
                 "x-rapidapi-host": "edamam-food-and-grocery-database.p.rapidapi.com"
-            }          
+            },
+            timeout: 2000, 
+            statusCode: {
+                404: function() {
+                  alert( "page not found" );
+                }
+              },
+            beforeSend: function() {                                // Before Ajax
+                loadingCircle = $("section .loader-wrapper");
+                loadingCircle.children().eq(1).text('Loading...');
+                loadingCircle.children().first().addClass("loader");
+                loadingCircle.show();;      // Load message
+              },
+            complete: function() {                                  // Once finished
+                loadingCircle.fadeOut("slow").remove();                                  // erase element from webpage
+              },          
         })
         .done(function(data){
-            loadingCircle.fadeOut("slow");
+            console.log(data);
             var nutrients  = data.parsed[0].food.nutrients;
             let ingrName = data.parsed[0].food.label;
             let ingrImage = data.parsed[0].food.image;
