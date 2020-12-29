@@ -15,6 +15,7 @@ nav img{
     margin: 0;
     padding: 0;
   } */
+
 #Search-button{
     background-color: blue;
     color:#fff;
@@ -72,7 +73,8 @@ p{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
- /* #result {
-     
-}  */
-
+/* Body 
+=========================== */
+#result li{
+    list-style-type: none;
+}
