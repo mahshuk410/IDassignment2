@@ -30,6 +30,8 @@ p{
 }
 .search-section{
     background-size: cover;
+    width: 100vw;
+    display:flex;
 }
 
 .search-section img{
@@ -44,8 +46,14 @@ p{
     height: 1.3cm;
     z-index: 1;
     position: relative;
-    bottom:300px;
+    bottom:350px;
+    left:350px;
+    padding: 0 20px;
     
+}
+.search-box{
+    justify-content:center;
+    align-items: center;
 }
 .loader-wrapper{
     background-color: #a8a8a8;
@@ -77,4 +85,18 @@ p{
 =========================== */
 #result li{
     list-style-type: none;
+}
+
+/* Cards 
+=============================*/
+.ingredient-card{
+    width:25rem;
+    padding:auto 30px;
+    margin:10px ;
+}
+.img-card{
+    object-fit: cover;
+    width:70%;
+    height:auto;
+    align-self: center;
 }
