@@ -7,8 +7,9 @@ nav li a{
     font-size: 20pt;
 }
 nav img{
-    position: absolute;;
-    top:20px;
+
+    width:100%;
+    height: auto;
 }
 /* ul {
     list-style-type: none;
@@ -55,32 +56,6 @@ p{
     justify-content:center;
     align-items: center;
 }
-.loader-wrapper{
-    background-color: #a8a8a8;
-    position: relative;
-}
-.loader-wrapper div{
-    color:#000000;
-    text-transform: uppercase;
-}
-
-.loader{
-    position: absolute;
-    justify-content: center;
-    border-radius: 50%;
-    border-top: 16px solid #f0481f;
-    border-right:16px solid #fff;
-    border-bottom:16px solid #f0481f;
-    border-left:16px solid#fff ;
-   
-    width: 120px;
-    height: 120px;
-    animation: spin 4s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
 /* Body 
 =========================== */
 #result li{
@@ -99,4 +74,16 @@ p{
     width:70%;
     height:auto;
     align-self: center;
+}
+h3,a{
+    cursor: pointer;
+}
+ul li{
+    list-style: none;
+}
+.card img{
+    object-fit: cover;
+}
+.card h3,.card h4{
+    text-align: center;
 }
