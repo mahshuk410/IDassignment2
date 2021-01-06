@@ -1,3 +1,9 @@
+@media only screen and (max-width:576px){
+    #logo{
+        width: 80%;
+        height:auto;
+    }
+} 
 /* Header 
 =========================*/
 nav .nav-item{
@@ -6,8 +12,7 @@ nav .nav-item{
 nav li a{
     font-size: 20pt;
 }
-nav img{
-
+#logo{
     width:100%;
     height: auto;
 }
@@ -30,44 +35,60 @@ p{
     margin: 0px 30px;
 }
 .search-section{
-    background-size: cover;
-    width: 100vw;
-    display:flex;
+    background-image:url(images/search-background.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    width:100vw;
+    padding-bottom: 300px;
 }
-
-.search-section img{
-    z-index: -1;
-    opacity: 0.65;
-    width:100%;
+#Search-button{
+    width:auto;
+}
+#Search-query{
+    width:90%;
 }
  #Search-query,#Search-button{
-    /* padding:0px 10px; */
     font-size: larger;
     border-radius: 4px;
     height: 1.3cm;
     z-index: 1;
-    position: relative;
-    bottom:350px;
-    left:350px;
     padding: 0 20px;
     
 }
-.search-box{
-    justify-content:center;
-    align-items: center;
+div#blockquote-Header{
+    font-family:Georgia, 'Times New Roman', serif !important;
+    font-size: 20pt;
+    color:#fff;
+    line-height: normal;
+    padding-top: 90px !important;
 }
 /* Body 
 =========================== */
+body{
+    background-color: #000000;
+}
 #result li{
     list-style-type: none;
 }
 
+.single_features p {
+    font-weight: bold;
+    font-size: 12pt;
+}
+.section_title p{
+    font-weight: 800;
+}
 /* Cards 
 =============================*/
 .ingredient-card{
     width:25rem;
     padding:auto 30px;
     margin:10px ;
+    background-color: rgba(47, 45, 54, 0.438);
+    
+}
+.ingredient-card h3{
+   color:#fff;
 }
 .img-card{
     object-fit: cover;
