@@ -5,13 +5,19 @@ $(document).ready(function (){
     $("#Search-query").keyup(function () {
 
         targetFood = $("#Search-query").val();
+        
         CapitalisedQuery = CapitaliseFirstLetter(targetFood);//store returned CapitalisedQuery
     });
-
+    
     $("#Search-button").click(function (e) {
         e.preventDefault();
+        // if (targetFood ===(' ') || targetFood === undefined){  //User input validation
+        //     alert("Please enter a valid Food Name!")
+        // };
         $("#result").before().text(`Search results for '${targetFood}'`);
         $.ajax({
+            async: true,
+            crossDomain: true,
             dataType: 'json',
             method: "GET",
             url: `https://edamam-food-and-grocery-database.p.rapidapi.com/parser?ingr=${concatPlusSymbol(CapitalisedQuery)}`,
@@ -24,20 +30,11 @@ $(document).ready(function (){
                 404: function() {
                   alert( "Ingredient name not found! Please try another one." );
                 }
-              },
-            beforeSend: function() {                                // Before Ajax
-                loadingCircle = $("section .loader-wrapper");
-                loadingCircle.children().eq(0).text('Loading...');
-                loadingCircle.children().first().addClass("loader");
-                loadingCircle.show();      // Load message
-              },
-            complete: function() {                                  // Once finished
-                loadingCircle.fadeOut("slow").hide().remove();                                  // erase element from webpage
-              }          
+            }
         })
             .done(function(data) {
                 console.log(concatPlusSymbol(CapitaliseFirstLetter(targetFood)));
-                console.log(data);
+                
                 localStorage.setItem('searchQuery',concatPlusSymbol(CapitaliseFirstLetter(targetFood)));
                 let rowNo = 1; //each column for one or a group of cards of ingredients
                 var ingrCount = 1;
@@ -60,10 +57,10 @@ $(document).ready(function (){
                 $("#result .card").append("</div>");
                 //=======================================================SIMILAR INGREDIENTS=============================================================
 
-                for (let h = 0; h < data.hints.length; h++) {           
+                for (let h = 0; h < data.hints.length; h++) {    
                     let similarIngr = data.hints[h].food.label;
                     let similarIngrImage = data.hints[h].food.image;
-                    
+                    console.log(similarIngr);
                     var nutrients = data.hints[h].food.nutrients;
                     //if (similarIngr.includes(CapitalisedQuery) || similarIngr.includes(CapitalisedQuery.toUpperCase()) || similarIngr.includes(CapitalisedQuery.toLowerCase()) ){  
                     // retrieved query-related results
@@ -85,13 +82,17 @@ $(document).ready(function (){
                         $(`${childElement} .card-body`).before(`<img src = ${similarIngrImage} alt="Image of ${similarIngr}" class ="card-img-top img-thumbnail"/><br>`);
                         $(`${childElement} img`).css("object-fit:cover;");
                     }
-                   
+                    $("#result .card").addClass('border border-success');
+                    $("#result .card").addClass('rounded');
+
                     $(`#result .card,${childElement}`).addClass('ingredient-card');
                     $('.card-img-top').addClass('img-card');
                     $(`${childElement} `).append(`</div>`);
                     ingrCount++;
                     //} 
                 };
+                
+                    
 
             })
     });
