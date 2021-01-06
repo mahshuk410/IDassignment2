@@ -7,29 +7,28 @@
         <link rel = "stylesheet" href = "style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
-        <!-- <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png"> -->
 
         <title>stayHealthy Nutrition </title>
 
 
         <!--====== Animate CSS ======-->
-        <!-- <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/animate.css">
-        <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/style.css.map">   
+        <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/animate.css">
         <!--====== Glide CSS ======-->
-        <!-- <link rel="stylesheet" type = "text/css" href="simple-free-gg/simple-template-free/assets/cssglide.core.css"> -->
+        <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/glide.core.css">
             
         <!--====== Line Icons CSS ======-->
-        <!-- <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/LineIcons.2.0.css"> -->
+         <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/LineIcons.2.0.css"> 
             
         <!--====== Bootstrap CSS ======-->
         <!-- <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/bootstrap-5.0.5-alpha.min.css"> -->
         
         <!--====== Default CSS ======-->
-        <!-- <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/default.css"> -->
+        <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/default.css">
         
         <!--====== Style CSS ======-->
-        <!-- <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/style.css"> -->
-     
+        <link rel="stylesheet" href="simple-free-gg/simple-template-free/assets/css/style.css">
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/513d44eb6d.js" crossorigin="anonymous"></script>
     </head>
     <body>
             <!--====== PRELOADER PART START ======-->
@@ -61,7 +60,7 @@
                         <div class="col-lg-12">
                             <nav class="navbar navbar-expand-lg">
                                 <a class="navbar-brand" href="index.html">
-                                    <img id="logo" src="images/Icon-image-design .svg" alt="StayHealthy Logo">
+                                    <img id="logo" src="images/Icon-image-design .svg" alt="StayHealthy Logo" >
                                 </a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="toggler-icon"></span>
@@ -83,9 +82,6 @@
                                         <li class="nav-item">
                                             <a class="page-scroll" href="#">Articles</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="page-scroll" href="#contact">Contact</a>
-                                        </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
                             </nav> <!-- navbar -->
@@ -94,58 +90,95 @@
                 </div> <!-- container -->
             </div> <!-- header navbar -->
 
+
             <div class="header_hero">
-                <!-- <div class="single_hero bg_cover d-flex align-items-center" style="background-image: url('assets/simple-free-gg/simple-template-free/assets/images/hero.jpg')"> -->
+                <div class="single_hero bg_cover d-flex align-items-center" style="background-image: url(images/HealthyFoodPlate.png);background-size: cover;">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8 col-md-10">
                                 <div class="hero_content text-center">
-                                    <h2 class="hero_title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">StayHealthy</br> Nutrition website</h2>
-                                    <p class="wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">A super simple website template based on Bootstrap 5 and HTML5, comes with all essential </br>elements & features to get started and ready to use for almost any type of business websites.</p>
-                                    <a href="#features" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Explore</a>
+                                    <h2 class="hero_title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">StayHealthy</br> Nutrition Website</h2>
+                                    <p class="wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">This website makes use of an Appilcation Programming Interface(API),aimed to promote food nutrition.There is a common misconception,that only physical activity makes up fitness.
+                                    </p>
+                                    <div id ="blockquote-Header">                                    
+                                        <q ><em>The muscles you engage during exercise, whether it’s cardio, resistance training or flexibility work, rely on the nutrition you provide them through your diet</em></q>
+                                        <a href="#features" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Explore</a>
+                                    </div>
                                 </div> <!-- hero content -->
                             </div>
                         </div> <!-- row -->
                     </div> <!-- container -->
-                <!-- </div> single hero -->
+                </div> <!-- single hero -->
             </div> <!-- header hero -->
         </section>
 
         <!--====== HEADER PART ENDS ======-->
-
-                <form class = "form-inline navbar-form pull-right">
-                    <input class = "form-control" type="search" placeholder = "Search for nutrtional facts">
-                    <button class = "btn btn-success"  type = "submit">Search</button>
-                </form>
-            
-        </nav>
-            
-        
-        <section><main>
-            <h2>Description</h2>
-            <p>This website makes use of an API,which allows users to discover nutritional and diet data of generic,packaged foods and ingredients.
-                Users can also discover the variety of healthy meals that can be prepared with any of the related food ingredients searched for.
-            </p>
-            </main>
+        <section id="features" class="features_area pt-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center pb-25">
+                            <h4 class="title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Why Choose Us</h4>
+                            <p class="wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.4s">In collaboration with Edamam Food & Grocery Database,this site lets you access <strong>750,000</strong> basic foods, restaurant items and consumer packaged foods</p>
+                        </div> <!-- section title -->
+                    </div>
+                </div> <!-- row -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.2s">
+                            <i class="fab fa-nutritionix"></i>        
+                            <h4 class="features_title">Nutritional Facts</a></h4>
+                            <p>Calculate the calories and types of nutritions in your food.Gotta get some proteins ya!</p>
+                        </div> <!-- single features --> 
+                    </div>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.4s">
+                            <i class="fas fa-utensils"></i>
+                            <h4 class="features_title">Food Search</a></h4>
+                            <p>Search for your favourite foods and ingredients that are found in supermarkets</p>
+                        </div> <!-- single features -->
+                    </div>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="single_features text-center mt-30 wow fadeInUp" data-wow-duration="1.3s"
+                            data-wow-delay="0.6s">
+                            <i class="fab fa-youtube"></i>
+                            <h4 class="features_title">Online Food Recipes</a></h4>
+                            <p>Search for the unlimited variety of healthy food recipes in the web.</p>
+                        </div> <!-- single features -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
         </section>
 
+
+
+                <!-- <form class = "form-inline navbar-form pull-right">
+                    <input class = "form-control" type="search" placeholder = "Search for nutrtional facts">
+                    <button class = "btn btn-success"  type = "submit">Search</button>
+                </form> -->
+            
+       
         
-        <header class = "masthead">
-            <div class = "container h-100">
-                <img class = "w-100 " src = "images/search-background.jpg">
-                <div class="row search-section search-box ">
-                    <form>
-                    <div class = "col-sm ">       
-                    <input type = "text" placeholder="Enter a food item or dish" id = "Search-query" value = "" required>
+        <section class = "search-section full-bg-img"> 
+            
+            <div class="container">
+                <div class="row justify-content-center align-items-center ">
+                    <div class = "col-sm col-md-8 ">   
+                        <form>
+                        <input type = "text" placeholder="Enter a food item or dish" id = "Search-query" value = "" required>
+                        </form>
                     </div>
-                    </form>
-                    <div class = "col-sm ">
+                    <div class = "col-sm col-md-3">
                         <button type = "submit"  id = "Search-button">Search</button>
                     </div>
-                    
                 </div>
             </div>
-        </header>
+          
+
+        </section>
+    
         <section id ="content">
             <div id = "result" class = "container">              <!-- Container to display search results -->
 
@@ -163,10 +196,47 @@
             </div>
             
         </section>
+        <!--====== FOOTER PART START ======-->
+
+        <!-- <footer id="footer" class="footer_area">
+            <div class="container">
+                <div class="footer_wrapper text-center d-lg-flex align-items-center justify-content-between">
+                    <p class="credit">Template Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck.</a> Partially modified by Mahshukurrahman</p>
+                    <div class="footer_social pt-15">
+                        <ul>
+                            <li><a href="https://www.facebook.com/mahshukurrahman.sulthan.5"><i class="lni lni-facebook-original"></i></a></li>
+                            <li><a href="https://github.com/"><i class="lni lni-github-original"></i></a></li>
+                            <li><a href="https://www.instagram.com/mahshuk410/"><i class="lni lni-instagram-original"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/mahshukurrahman-4050ab1a9/"><i class="lni lni-linkedin-original"></i></a></li>
+                        </ul>
+                    </div> <!-- footer social -->
+                <!-- </div> <!-- footer wrapper -->
+            <!--</div>  container 
+        </footer> -->
+
+        <!--====== FOOTER PART ENDS ======-->
         
+        <!--====== BACK TOP TOP PART START ======-->
+
+        <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+
+        <!--====== BACK TOP TOP PART ENDS ======-->
+
+        <script src="simple-free-gg/simple-template-free/assets/js/bootstrap.bundle-5.0.0.alpha-min.js"></script>
+    
+        <!--====== glide js ======-->
+        <script src="simple-free-gg/simple-template-free/assets/js/glide.min.js"></script>
+        
+        <!--====== wow js ======-->
+        <script src="simple-free-gg/simple-template-free/assets/js/wow.min.js"></script>
+                
+        <!--====== Main js ======-->
+        <script src="simple-free-gg/simple-template-free/assets/js/main.js"></script>
+    
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"crossorigin="anonymous"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
         <script src = "js/script.js"></script>
     </body>
 </html>
