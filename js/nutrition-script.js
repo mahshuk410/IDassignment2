@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    // let foodTitle = $(`${$(this)} h3`);
-    // $(this).attr("href",`nutrition.html?name=${foodTitle}`)
-    // console.log(`${$(this).attr("href")}`);
     $.ajax({
         dataType: 'json',
         method: "GET",
@@ -17,66 +14,96 @@ $(document).ready(function(){
             404: function() {
               alert( "Ingredient name not found! Please try another one." );
             }
-          }
+        }
     })
         .done(function(data) {
             console.log(data);
-            
             //=======================================================SIMILAR INGREDIENTS=============================================================
             const queryString = window.location.search;// returns only parameter of the website
             const urlParams = new URLSearchParams(queryString);
+            console.log(queryString);
             const product = urlParams.get('name');
             console.log("product: "+ product);
             let thisIngr = convertParameter(product);
-            
+            $('section.container').append("<div></div>");
+            //$(`${this} div`).addClass()            
             for (let h = 0; h < data.hints.length; h++) {           
                 let similarIngr  = data.hints[h].food.label;
                 let similarIngrImage = data.hints[h].food.image;
                 let similarIngrContent = data.hints[h].food.foodContentsLabel;
                 var nutrients = data.hints[h].food.nutrients;
-                if(similarIngr === thisIngr){
-                   
-                    $(".container").append(`<div class = "row" id="row1" ></div>`);
-                
-                
-                    $(`.container #row1`).append(`<div id = "other-ingr1" class = "card col-md-11"></div>`);
-                    var childElement = (`.container #row1 #other-ingr1`);  
+
+                if(similarIngr === product){
+                    $('section.container ').append(`<div class = "row" id="row1" ></div>`);
+            
+                    $(`section.container #row1`).append(`<div id = "other-ingr1" class = "card col-md-11"></div>`);
+                    var childElement = (`section.container #row1 #other-ingr1`);  
                     $(`${childElement} `).prepend(`<div class="col-md-4">`);
                     $(`${childElement} `).append(`<div class = "card-body"></div>`);
-                             
+                                
                     $(`${childElement}.card .card-body `).append(`<h3 class = "card-title">${similarIngr}</h3>`);
                     if (similarIngrImage === undefined) {
-                        $(`${childElement} .card-body`).before(`<span class ="card-img-top img-thumbnail">Image not available</span><br>`);
+                        $(`${childElement} .card-body`).before(`<span height="100px" class ="card-img-top img-thumbnail">Image not available</span><br>`);
                     }
                     else {
                         $(`${childElement} .card-body`).before(`<img src = ${similarIngrImage} alt="Image of ${similarIngr}" class ="card-img-top img-thumbnail"><br>`);
                         
                     }
-                    $(childElement).append(`<ul></ul>`);
-                    $(`.container .card,${childElement}`).addClass('ingredient-card');
-                    for (x in nutrients) {
-                        nutrients[x] = nutrients[x].toFixed(2);     //round up nutritional values to 2dp for simplicity
-                        if (x === "CHOCDF") {
-    
-                            $(`${childElement} ul`).append(`<li>carbohydrates : ${nutrients[x]}  </li>`); //simplify 'CHOCDF' to 'Carbohydrates'
-                        }
-                        else if (x === "PROCNT") {
-                            $(`${childElement} ul`).append(`<li>Protein:${nutrients[x]} </li>`); //simplify 'PROCNT' to 'Protein'
-                        }
-                        else {
-                            $(`${childElement} ul`).append(`<li>${x} : ${nutrients[x]} </li>`);
-                        }
-                    }
+                    $(`section.container .card,${childElement}`).addClass('ingredient-card');
                     if (similarIngrContent !== undefined) {     //for ingredients & dishes with foodContentsLabel property
                         data.hints[h].food.foodContentsLabel=data.hints[h].food.foodContentsLabel.replaceAll(';',',<br> ');
-                        $(`${childElement}`).append(`<h4 style="text-align:center;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>`);
+                        $(`${childElement} .card-body`).append(`<h4 style="text-align:start;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>`);
                     }
+
                     $('.card-img-top').addClass('img-card');
                     $(`${childElement}`).append("<p>Click <strong><a>here</a></strong> for recipe videos </p>")
+                    $(`${childElement} p`).addClass('video-link');
                     $(`${childElement} p a`).attr("href",`videos.html?name=Healthy+food+recipes+for+${concatPlusSymbol(product)}`);
-                    break; 
+                    localStorage.setItem("selectedItem",concatPlusSymbol(product));
+
+                    $('section.container ').append('<div class="table-responsive"></div>')
+                    $('section.container div.table-responsive').append('<table class="table table-dark"></table>');
+                    $(`section.container table`).append('<thead><tr></tr></thead>');
+                    var tableHeader = $(`section.container table thead tr`);
+                    tableHeader.append('<th scope = "col">#</th>');
+                    tableHeader.append('<th scope = "col">Nutrient</th>');
+                    tableHeader.append('<th scope = "col">Amount</th>');
+                    $('<tbody></tbody>').appendTo("table");
+                    let nutrientCount = 1;   
+                    
+                    for(x in nutrients){
+                        nutrients[x] = nutrients[x].toFixed(2);
+                        $('table tbody').append(`<tr><th scope = "row">${nutrientCount}</th></tr>`);
+                        let tableRow = $('table tbody tr');
+
+                        if (x === "CHOCDF" && nutrients[x] != null && x != null) {
+                            tableRow.append(`<td>Carbohydrates</td>`); //simplify 'CHOCDF' to 'Carbohydrates'
+                            tableRow.append(`<td>${nutrients[x].round}</td>`);
+                            
+                            
+                        }
+                        else if (x === "PROCNT" ) {
+                            tableRow.append(`<td>Protein</td>`); //simplify 'CHOCDF' to 'Carbohydrates'
+                            tableRow.append(`<td>${nutrients[x]}</td>`);
+                            
+                        }
+                        else {
+                            tableRow.append(`<td>${x}</td>`); //simplify 'CHOCDF' to 'Carbohydrates'
+                            tableRow.append(`<td>${nutrients[x]}</td>`);
+
+                        }
+                        
+                        nutrientCount++; //new row formed for each nutrient
+                    }
+                    let table = $('div.table-responsive')
+                    $('.card-body h4').before(table);   // add table to card 
+
+                    break; //lock the page after loading the user-selected ingredient
+
+                    
                 };
-                
+                $('footer').removeAttr('style');
+    
                 //} 
             };
 
@@ -102,3 +129,4 @@ function concatPlusSymbol(c) {
         return c;
     }
 };
+
