@@ -1,16 +1,11 @@
-@media only screen and (max-width:576px){
-    #logo{
-        width: 80%;
-        height:auto;
-    }
-} 
 /* Header 
 =========================*/
+html{
+    height: 100%;
+}
+
 nav .nav-item{
     padding:10px 20px;
-}
-nav li a{
-    font-size: 20pt;
 }
 #logo{
     width:100%;
@@ -34,26 +29,66 @@ nav li a{
 p{
     margin: 0px 30px;
 }
+/* ==================ANIMATIONS===================== */
+.hero_content h2{
+    animation-name: fadeInUp;
+    animation-duration: 1.3s;
+    animation-delay: 0.2s;
+}
+.hero_content p{
+    animation-name: fadeInUp;
+    animation-duration: 1.3s;
+    animation-delay: 0.5s;
+}
+#blockquote-Header q em{
+    animation-name: slidein ;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+    animation-play-state: paused;
+}
+#features h4{
+    animation-name: fadeInUp;
+    animation-duration: 1.3s;
+    animation-delay: 0.2s;
+
+}
+#features p{
+    animation-name: fadeInUp;
+    animation-duration: 1.3s;
+    animation-delay: 0.2s;
+
+}
+
+/*==============================================*/
 .search-section{
     background-image:url(images/search-background.jpg);
     background-size:cover;
     background-repeat: no-repeat;
-    width:100vw;
+    height:50%;
+    width:100%;
     padding-bottom: 300px;
 }
 #Search-button{
     width:auto;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+#Search-button:hover{
+    font-weight: 800;
+    opacity:1;
 }
 #Search-query{
+    background-color: rgb(53, 35, 35);
+    color: orangered;
     width:90%;
 }
  #Search-query,#Search-button{
-    font-size: larger;
-    border-radius: 4px;
-    height: 1.3cm;
+    font-size: 17pt;
+    border-radius: 7px;
+    height:70px;
     z-index: 1;
-    padding: 0 20px;
-    
+    padding: 0 30px;
+    margin-top: 500px;
 }
 div#blockquote-Header{
     font-family:Georgia, 'Times New Roman', serif !important;
@@ -62,10 +97,19 @@ div#blockquote-Header{
     line-height: normal;
     padding-top: 90px !important;
 }
+
+  
 /* Body 
 =========================== */
 body{
-    background-color: #000000;
+    background: linear-gradient(68deg, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em -3em, linear-gradient(-68deg, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) -3em -3em, radial-gradient(circle, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(68deg, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(-68deg, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, radial-gradient(circle, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em 3em;
+    background-size: 6em 6em;
+    background-color: #edfaf9;
+    background-repeat: repeat;
+    font: 14px/2 "Trebuchet MS", Verdana, sans-serif;
+
+    overflow-x:hidden;
+    overflow-y: auto;
 }
 #result li{
     list-style-type: none;
@@ -84,8 +128,8 @@ body{
     width:25rem;
     padding:auto 30px;
     margin:10px ;
-    background-color: rgba(47, 45, 54, 0.438);
-    
+    background-color: rgba(190, 190, 190, 0.438);
+    color:#fff;
 }
 .ingredient-card h3{
    color:#fff;
@@ -107,4 +151,54 @@ ul li{
 }
 .card h3,.card h4{
     text-align: center;
+}
+.card-body a h3:hover{
+    background-color: rgb(0, 255, 42);
+    color:#000;
+}
+.card h4{
+    font-size:22pt;
+    padding:25px 0px;
+}
+.card h3{
+    color:rgb(45, 45, 119);
+}
+table {
+    border-radius: 10px;
+}
+.ingredient-card .card-body ul{
+    color:rgb(15, 20, 19);
+    font-weight: 800;;
+}
+
+.video-link{
+    font-size:13pt;
+    font-weight:bolder;
+    padding:15px 10px ;
+    border:2px solid #f5c747;
+    margin-bottom: 20px;
+}
+.video-link a:hover{
+    background-color: rgb(255, 8, 0);
+    color:cornsilk;
+}
+/* ================================MEDIA QUERIES================================== */
+@media only screen and (max-width:576px){
+    #logo{
+        width: 80%;
+        height:auto;
+    }
+    #Search-button{
+        margin-top: -100px;
+    }
+    .card h4{
+        font-size: 20pt;
+    }
+} 
+@media only screen and (min-width:768px){
+    
+    .ingredient-card .card-body ul {
+        font-weight: 1000;
+        font-size:18pt;
+    } 
 }
