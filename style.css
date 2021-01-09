@@ -183,7 +183,7 @@ table {
     color:cornsilk;
 }
 /* ================================MEDIA QUERIES================================== */
-@media only screen and (max-width:576px){
+@media only screen and (max-width:600px){
     #logo{
         width: 80%;
         height:auto;
@@ -194,6 +194,7 @@ table {
     .card h4{
         font-size: 20pt;
     }
+    
 } 
 @media only screen and (min-width:768px){
     
