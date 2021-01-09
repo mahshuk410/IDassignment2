@@ -20,6 +20,7 @@ $(document).ready(function (){
         e.preventDefault();
         $("#result").before().text(`Search results for '${targetFood}'`);
         $.ajax({
+            
             async: true,
             crossDomain: true,
             dataType: 'json',
