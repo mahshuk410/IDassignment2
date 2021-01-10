@@ -58,7 +58,7 @@ $(document).ready(function(){
                     if (similarIngrContent !== undefined) {     //for ingredients & dishes with foodContentsLabel property
                         data.hints[h].food.foodContentsLabel=data.hints[h].food.foodContentsLabel.replaceAll(';',',<br> ');
                         $(`${childElement} .card-body`).append
-                        ('<h4 style="text-align:start;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>');
+                        (`<h4 style="text-align:start;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>`);
                     }
 
                     $('.card-img-top').addClass('img-card');
