@@ -11,11 +11,6 @@ nav .nav-item{
     width:100%;
     height: auto;
 }
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  } */
 
 #Search-button{
     background-color: blue;
@@ -29,6 +24,14 @@ nav .nav-item{
 p{
     margin: 0px 30px;
 }
+div#blockquote-Header{
+    font-family:Georgia, 'Times New Roman', serif !important;
+    font-size: 20pt;
+    color:#fff;
+    line-height: normal;
+    padding-top: 90px !important;
+}
+
 /* ==================ANIMATIONS===================== */
 .hero_content h2{
     animation-name: fadeInUp;
@@ -44,22 +47,52 @@ p{
     animation-name: slidein ;
     animation-duration: 0.5s;
     animation-direction: reverse;
-    animation-play-state: paused;
+    animation-play-state:running;
 }
-#features h4{
+#features h4,#features p{
     animation-name: fadeInUp;
     animation-duration: 1.3s;
     animation-delay: 0.2s;
 
 }
-#features p{
+.section_title h4{
+    visibility: visible; 
+    animation-duration: 1.3s; 
+    animation-delay: 0.2s; 
     animation-name: fadeInUp;
-    animation-duration: 1.3s;
-    animation-delay: 0.2s;
-
+}
+div.single_features{
+    visibility: visible; 
+    animation-duration: 1.3s; 
+    animation-delay: 0.2s; 
+    animation-name: fadeInUp;
+}
+.search-section{
+    visibility: visible;
+    animation-duration: 0.5s;
+    animation-delay: 0.1s;
+    animation-name: fadeInUp;
+}
+#Search-query,#Search-button{
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-name: slidein;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes slidein{
+    0% {left:0px;opacity:0}
+    50%{left:50%;opacity:0.5}
+    100%{left:100%;opacity:1}
 }
 
-/*==============================================*/
+.ingredient-card{
+    visibility: visible;
+    animation-duration: 1.3s;
+    animation-delay: 0.4s;
+    animation-name: fadeInUp;
+}
+/*===================SEARCH LANDING SECTION===========================*/
 .search-section{
     background-image:url(images/search-background.jpg);
     background-size:cover;
@@ -90,16 +123,9 @@ p{
     padding: 0 30px;
     margin-top: 500px;
 }
-div#blockquote-Header{
-    font-family:Georgia, 'Times New Roman', serif !important;
-    font-size: 20pt;
-    color:#fff;
-    line-height: normal;
-    padding-top: 90px !important;
-}
 
   
-/* Body 
+/* BODY
 =========================== */
 body{
     background: linear-gradient(68deg, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em -3em, linear-gradient(-68deg, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) -3em -3em, radial-gradient(circle, #4ac5d4 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(68deg, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, linear-gradient(-68deg, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 0 0, radial-gradient(circle, #f5c747 0.9em, rgba(255, 255, 255, 0) 0.99em) 3em 3em;
@@ -114,22 +140,27 @@ body{
 #result li{
     list-style-type: none;
 }
-
+.section_title p{
+    color:#a52a2a !important;
+    font-weight:800;
+}
+.single_features{
+    padding:15px 0px;
+}
 .single_features p {
     font-weight: bold;
     font-size: 12pt;
 }
-.section_title p{
-    font-weight: 800;
-}
+
 /* Cards 
 =============================*/
 .ingredient-card{
-    width:25rem;
-    padding:auto 30px;
+    width:22rem;
+    padding:2px 30px;
     margin:10px ;
     background-color: rgba(190, 190, 190, 0.438);
     color:#fff;
+
 }
 .ingredient-card h3{
    color:#fff;
@@ -172,34 +203,46 @@ table {
 }
 
 .video-link{
-    font-size:13pt;
-    font-weight:bolder;
     padding:15px 10px ;
-    border:2px solid #f5c747;
+    border:2px solid #288fe9;
+    text-align: center;
     margin-bottom: 20px;
 }
 .video-link a:hover{
+
     background-color: rgb(255, 8, 0);
     color:cornsilk;
 }
 /* ================================MEDIA QUERIES================================== */
 @media only screen and (max-width:600px){
     #logo{
+        position: absolute;
+        top:10px;
         width: 80%;
         height:auto;
     }
+    #Search-query{
+        border-radius: 50px;
+        font-size: 13pt;
+    }
+
     #Search-button{
-        margin-top: -100px;
+        font-size: 10pt;
+        height:1cm;
+        padding:5px 10px;
+        position: relative;
+        
     }
     .card h4{
         font-size: 20pt;
     }
-    
 } 
 @media only screen and (min-width:768px){
-    
+    .card{
+        padding-top: 83px;
+    }
     .ingredient-card .card-body ul {
-        font-weight: 1000;
+        font-weight: 100;
         font-size:18pt;
     } 
 }
