@@ -18,16 +18,16 @@ $(document).ready(function(){
         }
     })
         .done(function(data) {
-            console.log(data);
+            
             //=======================================================SEARCH-RELATED INGREDIENTS=============================================================
             const queryString = window.location.search;// returns only parameter of the website
             const urlParams = new URLSearchParams(queryString);
-            console.log(queryString);
+            
             const product = urlParams.get('name');
-            console.log("product: "+ product);
+            
             let thisIngr = convertParameter(product);
             $('section.container').append("<div></div>");
-            //$(`${this} div`).addClass()            
+                       
             for (let h = 0; h < data.hints.length; h++) {    
 
                 let similarIngr  = data.hints[h].food.label;
@@ -36,17 +36,17 @@ $(document).ready(function(){
                 var nutrients = data.hints[h].food.nutrients;
 
                 if(similarIngr === product){
-                    $('section.container ').append(`<div class = "row" id="row1" ></div>`);
+                    $('section.container ').append('<div class = "row" id="row1" ></div>');
             
-                    $(`section.container #row1`).append(`<div id = "other-ingr1" class = "card col-md-11"></div>`);
-                    var childElement = (`section.container #row1 #other-ingr1`);  
-                    $(`${childElement} `).prepend(`<div class="col-md-4">`);
-                    $(`${childElement} `).append(`<div class = "card-body"></div>`);
+                    $('section.container #row1').append('<div id = "other-ingr1" class = "card col-md-11"></div>');
+                    var childElement = ('section.container #row1 #other-ingr1');  
+                    $(`${childElement} `).prepend('<div class="col-md-4">');
+                    $(`${childElement} `).append('<div class = "card-body"></div>');
                                 
                     $(`${childElement}.card .card-body `).append(`<h3 class = "card-title">${similarIngr}</h3>`);
                     if (similarIngrImage === undefined) {
 
-                        $(`${childElement} .card-body`).before(`<span height="100px" class ="card-img-top img-thumbnail">Image not available</span><br>`);
+                        $(`${childElement} .card-body`).before('<span height="100px" class ="card-img-top img-thumbnail">Image not available</span><br>');
                     }
                     else {
 
@@ -58,22 +58,21 @@ $(document).ready(function(){
                     if (similarIngrContent !== undefined) {     //for ingredients & dishes with foodContentsLabel property
                         data.hints[h].food.foodContentsLabel=data.hints[h].food.foodContentsLabel.replaceAll(';',',<br> ');
                         $(`${childElement} .card-body`).append
-                        (`<h4 style="text-align:start;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>`);
+                        ('<h4 style="text-align:start;">Food contents:</h4> <ul>${data.hints[h].food.foodContentsLabel}</ul>');
                     }
 
                     $('.card-img-top').addClass('img-card');
                                  
-                    $(`div#video-link a`).attr("href",`videos.html?name=Healthy+food+recipes+for+${concatPlusSymbol(product)}`);
+                    $('div#video-link a').attr("href",`videos.html?name=Healthy+food+recipes+for+${concatPlusSymbol(product)}`);
                     
                     localStorage.setItem("selectedItem",concatPlusSymbol(product));
 
-                    $('section.container ').append('<div class="table-responsive"></div>')
+                    $('section.container ').append('<div class="table-responsive"></div>');
                     $('section.container div.table-responsive').append
                     ('<table class="table table-striped table-hover table-border table-dark"></table>');
 
-                    $(`section.container table`).append('<thead><tr></tr></thead>');
-
-                    var tableHeader = $(`section.container table thead tr`);
+                    $('section.container table').append('<thead><tr></tr></thead>');
+                    var tableHeader = $('section.container table thead tr');
                     tableHeader.append('<th scope = "col">#</th>');
                     tableHeader.append('<th scope = "col">Nutrient</th>');
                     tableHeader.append('<th scope = "col">Amount</th>');
@@ -83,17 +82,16 @@ $(document).ready(function(){
                     
                     for(x in nutrients){
                         nutrients[x] = nutrients[x].toFixed(2);
+                        
                         $('table tbody').append(`<tr><th scope = "row">${nutrientCount}</th></tr>`);
                         let tableRow = $('table tbody tr');
 
-                        if (x === "CHOCDF" && nutrients[x] != null && x != null) {
-                            tableRow.append(`<td>Carbohydrates</td>`); //simplify 'CHOCDF' to 'Carbohydrates'
-                            tableRow.append(`<td>${nutrients[x].round}</td>`);
-                            
-                            
+                        if (x === "CHOCDF") {
+                            tableRow.append('<td>Carbohydrates</td>'); //simplify 'CHOCDF' to 'Carbohydrates'
+                            tableRow.append(`<td>${nutrients[x]}</td>`);
                         }
                         else if (x === "PROCNT" ) {
-                            tableRow.append(`<td>Protein</td>`); //simplify 'CHOCDF' to 'Carbohydrates'
+                            tableRow.append('<td>Protein</td>'); //simplify 'CHOCDF' to 'Carbohydrates'
                             tableRow.append(`<td>${nutrients[x]}</td>`);
                             
                         }
@@ -105,47 +103,48 @@ $(document).ready(function(){
                         $(' table th').next().css("color","#a64b5c;");
                         nutrientCount++; //new row formed for each nutrient
                     }
-                    let table = $('div.table-responsive')
+                    let table = $('div.table-responsive');
                     $('.card-body h4').before(table);   // add table to card 
                     showVideoLink();  // update DOM with a video page link
                     break; //lock the page after loading the user-selected ingredient
 
                     
-                };
-                $('footer').removeAttr('style');//removing css property "display:none"
+                }
+                $('footer').show();//removing css property "display:none"
     
-                //} 
-            };
+                
+            }
 
-        })
+        });
 
 });
 //==========================================================FUNCTIONS===================================================================
 function convertParameter(c) {
     if (c.includes('+')) {       //finds query with spacing in words
-        return concatString = c.replaceAll('+', ' ');// translate parameter from hyperlink to string
-
+        concatString = c.replaceAll('+', ' ');// translate parameter from hyperlink to string
+        return concatString;
     }
     else {
         return c;
     }
 
-};
+}
 function concatPlusSymbol(c) {
     if (c.includes(' ')) {       //finds query with spacing in words
-        return concatString = c.replaceAll(' ', '+');// translate query to fit in the API request url
+        concatString = c.replaceAll(' ', '+');// translate query to fit in the API request url
+        return concatString;
     }
     else {
         return c;
     }
-}; 
+}
 
 
 function showVideoLink(){ // create videoLink element uploaded to DOM
-   $('.card-body').append(`<div id ="video-link" class= "row""></div>`);
+   $('.card-body').append('<div id ="video-link" class= "row""></div>' );
    $('div#video-link').html('<div class = "col"></div>');
    $('div#video-link div.col').html('<div class = "alert  alert-secondary video-link" role="alert"></div>');
-   $('div.alert').html('<p style = "font-weight:900;"><a class = "alert-link">Click here</a> to watch recipe videos</p>');
+   $('div.alert').html('<p style = "font-weight:900;"><a href = "videos.html" class = "alert-link">Click here</a> to watch recipe videos</p>');
    $('div.alert ').addClass('video-link');
 };
 

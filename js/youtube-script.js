@@ -2,12 +2,12 @@ $(document).ready(function(){
     $('button').click(function(e){
         //e.preventDefault();
         $(this).css("background-color","#fff");
-        fetch
+        
         $.ajax({
             dataType:"json",
             method:"GET",
-            //url:`https://cors-anywhere.herokuapp.com/youtube.googleapis.com/http://youtube/v3/search?key=AIzaSyALr714iogoZNJl7sKY4MJrFdwaIQ-d7YE`,
-            src:`./youtubeSearch.json`,
+            url:`http://cors-anywhere.herokuapp.com/youtube.googleapis.com/http://youtube/v3/search?key=AIzaSyALr714iogoZNJl7sKY4MJrFdwaIQ-d7YE`,
+            
             //url:`https://cors-anywhere.herokuapp.com/youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&videoEmbeddable=true&key=AIzaSyALr714iogoZNJl7sKY4MJrFdwaIQ-d7YE&q=How+to+make+chicken+pasta`,
             xhrFields: {
                 withCredentials: false
@@ -35,7 +35,7 @@ $(document).ready(function(){
                     $(`${this} iframe`).attr("width",`${data.items[v].snippet.thumbnail.high.width}`); //.high --> object with high quality iframe properties
                 }
             });
-            $('footer').removeAttr('style');
+            $('footer').show();
 
     });
 });
@@ -49,4 +49,4 @@ function concatPlusSymbol(c) {
         return c;
     }
 
-};
+}
