@@ -2,13 +2,15 @@ var targetFood;
 var loadingCircle;
 let pageCount;
 $(document).ready(function (){
+
     pageCount = 1; //initialise page No. if user toggles between pages
     let CapitalisedQuery;
     $("#Search-query").keyup(function () {
 
         targetFood = $("#Search-query").val();
-        
         CapitalisedQuery = CapitaliseFirstLetter(targetFood);//store returned CapitalisedQuery
+        localStorage.setItem('searchQuery',concatPlusSymbol(CapitalisedQuery));
+
     });
     if ( $(`li.nav-item a`).text === "Nutrition" && (pageCount ==1) ){
         $(`li.nav-item`).click(function(e){
@@ -17,8 +19,8 @@ $(document).ready(function (){
         })
     }
     $("#Search-button").click(function (e) {
+        $('#result').empty();  //to reset the element's content to prevent appending of previous results
         e.preventDefault();
-        $("#result").before().text(`Search results for '${targetFood}'`);
         $.ajax({
             
             async: true,
@@ -33,15 +35,15 @@ $(document).ready(function (){
             timeout: 2000, 
             statusCode: {
                 404: function() {
-                  alert( "Ingredient name not found! Please try another one." );
+                  alert( "Ingredient name not found! Please try another one." );         
                 }
             }
         })
             .done(function(data) {
                 console.log(concatPlusSymbol(CapitaliseFirstLetter(targetFood)));
                 if ((data.hints).length >= 1){  //valid inputs
-                    localStorage.setItem('searchQuery',concatPlusSymbol(CapitaliseFirstLetter(targetFood)));
-                
+
+                    
                     //=======================================================SIMILAR INGREDIENTS=============================================================
                     let rowNo = 0; //each column for one or a group of cards of ingredients
                     let ingrCount = 1;
@@ -60,11 +62,14 @@ $(document).ready(function (){
                         }
                         
                         $(`#result #row${rowNo}`).append(`<div id = "other-ingr${ingrCount}" class = "card"></div>`);
+
                         var childElement = `#result #row${rowNo} #other-ingr${ingrCount}`;  //childElement set to var to get updated upon ingrCount++
                         $(`${childElement} `).append(`<div class="col-md-4">`);
                         $(`${childElement} `).append(`<div class = "card-body"></div>`);
                         $(`${childElement}.card .card-body `).append(`<a href = "nutrition.html?name=${concatPlusSymbol(similarIngr)}"></a>`);         
                         $(`${childElement}.card .card-body a `).append(`<h3 class = "card-title">${similarIngr}</h3>`);
+
+
                         if (similarIngrImage === undefined) {
                             $(`${childElement} .card-body`).before(`<span class ="card-img-top img-thumbnail">Image not available</span><br>`);
                         }
@@ -76,17 +81,19 @@ $(document).ready(function (){
                         $("#result .card").addClass('rounded');
     
                         $(`#result .card,${childElement}`).addClass('ingredient-card');
+                        $(this).addClass('wow');
+                        $(this).addClass('fadeInUp');
                         $('.card-img-top').addClass('img-card');
                         $(`${childElement} `).append(`</div>`);
                         ingrCount++;
-                        //} 
+                        
                     };
                     $('#result a').click(function(){
                         pageCount++; //redirected to 'Nutritions' page = 2
                         localStorage.setItem("pageNo",pageCount);
                     });
                     if ($(".nav-item a").text === "Videos"){
-                        var videoPageLink = $(this);   // retrieve "Videos" Nav element
+                        var videoPageLink = $('nav.item a');   // retrieve "Videos" Nav element
                     }
                     videoPageLink.click(function(){
                         if (pageCount == 1){
@@ -94,8 +101,9 @@ $(document).ready(function (){
                         }
                     }) 
                 }
-                else if ((data.parsed).length == 0 && (data.hints).length == 0){            // for Invalid inputs 
-                    alert("The food or ingredient not found.\n Please enter a valid Food name.");
+                else if ((data.parsed).length == 0 && (data.hints).length == 0){     //exception handling for invalid input 
+                    alert("Food entered is not found! Please enter a valid food or ingredient.");
+            
                 }
                 
                     
