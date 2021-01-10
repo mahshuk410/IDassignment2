@@ -224,8 +224,8 @@ table {
     #Search-query{
         border-radius: 50px;
         font-size: 13pt;
-        position: absolute;
-        top:35px;
+        position: relative;
+        bottom:35px;
         
     }
 
