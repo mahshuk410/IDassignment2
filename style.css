@@ -78,7 +78,7 @@ div.single_features{
     animation-delay: 1s;
     animation-name: slidein;
     animation-timing-function: linear;
-    animation-fill-mode:forwards;
+    animation-fill-mode:none;
 }
 @keyframes slidein{
     0% {left:0px;opacity:0}
@@ -224,19 +224,29 @@ table {
     #Search-query{
         border-radius: 50px;
         font-size: 13pt;
+        position: absolute;
+        top:50%;
+        
     }
 
     #Search-button{
         font-size: 10pt;
         height:1cm;
         padding:5px 10px;
-        position: relative;
-        
     }
     .card h4{
         font-size: 20pt;
     }
-} 
+    .search-section{
+        background-image:url(images/search-background.jpg);
+        background-size:auto;
+        background-repeat: no-repeat;
+        height:50%;
+        width:100%;
+        padding-bottom: 10px;
+        position: relative;
+    } 
+}   
 @media only screen and (min-width:768px){
     .card{
         padding-top: 83px;
