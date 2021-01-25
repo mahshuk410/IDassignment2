@@ -106,7 +106,7 @@ After Description page
 * Some food images not found (not uploaded on API host server)
 * Mobile Chrome scroll lag
 * _FIXED_ website pitch recording
-* [Video Recording](C:/Users/mahsh/Desktop/NP Sem 1.2/Interactive Dev/IDAssignment2/ID_S10204884_Mahshuk_Assg02_website)
+* [Video Recording](C:/Users/mahsh/Desktop/NP Sem 1.2/Interactive Dev/IDAssignment2/ID_S10204884_Mahshuk_Assg02_website/3AF091DC-27CF-4EA2-8690-92A38CB8CECE-.mp4)
 # Credits
 
 * ## Template Info
