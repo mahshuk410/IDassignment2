@@ -105,7 +105,7 @@ After Description page
 * YouTube CORS issues
 * Some food images not found (not uploaded on API host server)
 * Mobile Chrome scroll lag
-
+* _FIXED_ website pitch recording![Video Recording](C:/Users/mahsh/Desktop/NP Sem 1.2/Interactive Dev/IDAssignment2/ID_S10204884_Mahshuk_Assg02_website)
 # Credits
 
 * ## Template Info
