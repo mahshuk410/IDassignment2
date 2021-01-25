@@ -107,6 +107,7 @@ After Description page
 * Mobile Chrome scroll lag
 * _FIXED_ website pitch recording
 * [Video Recording](3AF091DC-27CF-4EA2-8690-92A38CB8CECE-.mp4)
+* _FIXED_ nutritonscript.js loading in nutrition.html
 # Credits
 
 * ## Template Info
